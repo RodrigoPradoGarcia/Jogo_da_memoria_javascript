@@ -1,0 +1,533 @@
+
+:root
+{
+    --pulse-color: rgba(0, 153, 255,.5);
+    --dark: rgb(61, 61, 61);
+    --azul: rgb(59, 66, 165);
+}
+
+*
+{
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+}
+
+.wrapper
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+@keyframes gradiente
+{
+    0%
+    {
+        background-position: 0%;
+    }
+    50%
+    {
+        background-position: 100%;
+    }
+    100%
+    {
+        background-position: 0%;
+    }
+}
+
+/* CARD */
+
+.wrapper
+{
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+}
+
+.card
+{
+    height:210px;
+    width:135px;
+    margin:5px;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #0008;
+    cursor:pointer;
+    background:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    top:0;
+    left:0;
+    transition:all .5s ease-in-out, top .2s ease-in-out, left .2s ease-in-out;
+}
+
+.pulse::before
+{
+    content:'';
+    height:1px;
+    width:1px;
+    background: var(--pulse-color);
+    position:absolute;
+    top:40%;
+    border-radius:50%;
+    box-shadow: 0px 0px 0px 0px var(--pulse-color);;
+}
+
+.pulse::before
+{
+    animation: pulse .3s ease-in-out 2;
+    animation-fill-mode: forwards;
+}
+
+@keyframes pulse
+{
+    0%
+    {
+        height:1px;
+        width:1px;
+        box-shadow: 0px 0px 0px 0px var(--pulse-color);;
+    }
+    50%
+    {
+        height:80px;
+        width:80px;
+        box-shadow: 0px 0px 0px 80px var(--pulse-color);;
+    }
+    100%
+    {
+        height:1px;
+        width:1px;
+        box-shadow: 0px 0px 0px 0px var(--pulse-color);;
+     
+    }
+}
+
+.anim90
+{
+    animation-name: animar90deg;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.anim180
+{
+    animation-name: animar180deg;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.anim90Rev
+{
+    animation-name: animar90degRev;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.anim180Rev
+{
+    animation-name: animar180degRev;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.card:hover
+{
+    top:-5px;
+    left:-5px;
+}
+
+@keyframes animar90deg
+{
+    from
+    {
+        transform: rotateY(0deg);
+    }
+    to
+    {
+        transform: rotateY(90deg);
+    }
+}
+
+@keyframes animar180deg
+{
+    from
+    {
+        transform: rotateY(90deg);
+    }
+    to
+    {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes animar90degRev
+{
+    from
+    {
+        transform: rotateY(90deg);
+    }
+    to
+    {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes animar180degRev
+{
+    from
+    {
+        transform: rotateY(180deg);
+    }
+    to
+    {
+        transform: rotateY(90deg);
+    }
+}
+
+.fundo
+{
+    height:90%;
+    width:90%;
+    background-image: url('./assets/card-back.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 20%;
+}
+
+.deck-wrapper
+{
+    min-height:100vh;
+    width:100vw;
+    background: rgb(138,150,238);
+  background: linear-gradient(90deg, rgba(138,150,238,1) 0%, rgba(62,60,139,1) 49%, rgba(18,32,64,1) 100%);
+    background-size: 400% 100%;
+
+    animation:gradiente 30s ease-in-out infinite;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.deck
+{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:flex-start;
+    max-width:1200px;
+}
+
+.moves
+{
+    color:white;
+    padding:20px 0;
+}
+
+.vitoria
+{
+    height:100vh;
+    width:0%;
+    position:fixed;
+    top:0px;
+    left:0px;
+    background:var(--azul);
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+}
+
+.vitoria h1
+{
+    text-align:center;
+    color:white;
+    font-size:40px;
+    letter-spacing: 8px;
+}
+
+.moves
+{
+    text-align:center;
+    margin-top:20px;
+    letter-spacing:4px;
+}
+
+.btnVitoria
+{
+    margin:auto;
+    display:block;
+    margin-top:10px;
+    padding:10px 20px;
+    font-size:16px;
+    letter-spacing: 2px;
+    box-shadow: 3px 3px 5px #0008;
+    cursor:pointer;
+    transition: .3s ease-in-out;
+}
+
+.victAnim
+{
+    animation: victoryScreen 2s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.victAnim2Delay
+{
+    transform: translate(-100px);
+    filter: opacity(0);
+    animation: titleVitoria 2s ease-in-out;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+.victAnim4Delay
+{
+    transform: translate(-100px);
+    filter: opacity(0);
+    animation: titleVitoria 2s ease-in-out;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+}
+
+.victAnim6Delay
+{
+    transform: translate(-100px);
+    filter: opacity(0);
+    animation: titleVitoria 2s ease-in-out;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+}
+
+.btnVitoria:hover
+{
+    background:black;
+    color:white;
+}
+
+.btnVitoria a
+{
+    transition: .5s ease-in-out;
+}
+
+.btnVitoria:hover a
+{
+    color:white !important;
+}
+
+@keyframes titleVitoria
+{
+    0%
+    {
+        transform: translate(-100px);
+        filter: opacity(0);
+    }
+    100%
+    {   
+        transform: translate(-0px);
+        filter: opacity(1);
+    }
+}
+
+@keyframes victoryScreen
+{
+    0%
+    {
+        width:0%;
+    }
+    100%
+    {
+        width:100%;
+    }
+}
+
+.checkbox-container
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:50px;
+}
+
+.checkbox-container input[type="checkbox"]
+{
+    display:none;
+}
+
+.checkbox-container input[type='checkbox'] + label
+{
+    cursor:pointer;
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:9999;
+}
+
+.checkbox-container input[type='checkbox'] + label .icone
+{
+    color:white ;
+    transform: rotateZ(0deg);
+    transition: 1s ease-in-out;
+}
+
+.checkbox-container input[type='checkbox']:checked + label .icone
+{
+    transform: rotateZ(360deg);
+}
+
+.checkbox-container input[type='checkbox'] ~ .menu
+{
+    height:0px;
+    width:0px;
+    border-radius: 50%;
+    background:var(--azul);
+    position:absolute;
+    top:10px;
+    right:10px;
+    box-shadow: 0px 0px 0px 0vmax var(--azul);
+    z-index:1;
+    transition: .5s ease-in-out;
+}
+
+.checkbox-container input[type='checkbox']:checked ~ .menu
+{
+    height:50vmax;
+    width:50vmax;
+    background:var(--azul);
+    box-shadow: 0px 0px 0px 50vw var(--azul);
+}
+
+.checkbox-container input[type='checkbox'] + label svg
+{
+    transition: .5s ease-in-out;
+}
+
+.checkbox-container input[type='checkbox']:checked + label svg
+{
+    color:white;
+}
+
+.checkbox-container input[type='checkbox'] ~ nav
+{
+    position:absolute;
+    top:20%;
+    z-index:-1;
+    filter:opacity(0);
+    transition: .5s ease-in-out;
+    letter-spacing: 2px;
+}
+
+.checkbox-container input[type='checkbox'] ~ nav ul li
+{
+    list-style-type: none;
+}
+
+.checkbox-container input[type='checkbox']:checked ~ nav
+{
+    z-index:9999;
+    filter:opacity(1);
+}
+
+.radio
+{
+    padding:10px 0;
+}
+
+input[type="radio"] + label
+{
+    cursor:pointer;
+    height:20px;
+    width:20px;
+    position:absolute;
+    left:-30px;
+    background:white;
+    border-radius:50%;
+    transition: .5s ease-in-out;
+}
+
+input[type="radio"] + label::after
+{
+    content:'';
+    background:white;
+    height:10px;
+    width:10px;
+    position:absolute;
+    top:25%;
+    left:25%;
+    border-radius: 50%;
+    transition: .5s ease-in-out;
+}
+
+input[type="radio"]:checked + label::after
+{
+    background:rgb(240, 224, 6);
+}
+
+input[type="radio"]:checked + label
+{
+    background:rgb(70, 54, 1);
+}
+
+input[type="radio"]
+{
+    display:none;
+}
+
+input[type="radio"] ~ span
+{
+    color:white;
+    transition: .5s ease-in-out;
+}
+
+input[type="radio"]:checked ~ span
+{
+    color:rgb(225, 236, 161);
+}
+
+body
+{
+    background:var(--azul);
+}
+
+.menuItem
+{
+    color:white;
+    padding:20px 0;
+}
+
+.apply
+{
+    margin-top:50px;
+    padding: 10px 20px;
+    font-size:16px;
+    letter-spacing: 2px;
+    cursor:pointer;
+}
+
+@media screen and (max-width:600px)
+{
+    .card
+    {
+        cursor:default;
+        width:25vw;
+        height:calc( 25vw / 9 * 16 );
+    }
+
+    .moves
+    {
+        font-size:22px;
+    }
+}
